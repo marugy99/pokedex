@@ -1,20 +1,51 @@
+import Link from 'next/link'
+import { useState } from 'react'
+  
   export default function Home({ pokemon }) {
+
+    const [initialPokemon, setInitialPokemon] = useState(pokemon)
+
+    const filterPoke = (e) => {
+      const searchString = e.target.value.toLowerCase()
+      const filteredPoke = pokemon.filter(poke => poke.name.toLowerCase().includes(searchString))
+      setInitialPokemon(filteredPoke)
+    }
+
     return (
       <>
-        <h1 className='text-4xl text-center mt-4'>Pokedex by Maru</h1>
+        <h1 className='text-4xl text-center'>Pokedex by Maru</h1>
 
-        {pokemon.map((poke, index) => (
+        <input
+                type="text"
+                name="searchBar"
+                id="searchBar"
+                placeholder="Search for a Pokemon"
+                className='border border-gray-200 p-2 block mx-auto sm:w-3/5 w-full my-4 rounded-lg'
+                onKeyUp={filterPoke}
+            />
 
-          <div key={poke.name} className='flex justify-center items-center gap-12 bg-gray-100 my-6 rounded-lg w-3/5 mx-auto hover:shadow-lg'>
+        <ul>
+          
+          {initialPokemon.map((poke, index) => (
 
-            <div>
-              <span className='font-bold'>{index + 1 + '. '}</span><h2 className='capitalize inline'>{poke.name}</h2>
-            </div>
+            <li key={index} className='bg-gray-100 my-6 rounded-lg sm:w-3/5 mx-auto hover:shadow-lg'>
 
-            <img src={poke.image} alt={poke.name} className='w-1/4'/>
+              <Link href={`/pokemon?name=${poke.name}`}>
 
-          </div>
-        ))}
+                <a className='flex justify-center items-center gap-12'>
+
+                  <span className='font-bold'>{index + 1 + '.'}</span><h2 className='capitalize inline'>{poke.name}</h2>
+
+                  <img src={poke.image} alt={poke.name} className='w-1/4'/>
+                
+                </a>
+              
+              </Link>              
+
+            </li>
+          ))}
+
+        </ul>
       </>
     )
   }
