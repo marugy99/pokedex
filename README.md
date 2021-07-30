@@ -11,6 +11,6 @@ Website with information about the first 150 pokemons from the [Poke API](https:
 ## Dev Server
 To run the dev server, run npm run dev and navigate to <code>localhost:3000</code>
 
-# Preview
+## Preview
 
 ![website screenshot](https://i.imgur.com/s3NuyVE.png)
