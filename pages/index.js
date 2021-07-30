@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { useState } from 'react'
+import Image from 'next/image'
   
   export default function Home({ pokemon }) {
 
@@ -13,31 +14,32 @@ import { useState } from 'react'
 
     return (
       <>
-        <h1 className='text-4xl text-center'>Pokedex by Maru</h1>
+        <div className='flex justify-center'>
+          <Image src='/pokebola.svg' alt='pokeball logo' width={30} height={30} />
+          <h1 className='text-3xl sm:text-4xl text-center text-gray-800 font-bold ml-2'>Pokedex by Maru</h1>
+        </div>
 
         <input
                 type="text"
                 name="searchBar"
                 id="searchBar"
                 placeholder="Search for a Pokemon"
-                className='border border-gray-200 p-2 block mx-auto sm:w-3/5 w-full my-4 rounded-lg'
+                className='border border-gray-200 p-2 block mx-auto sm:w-3/5 w-full my-4 rounded-lg focus:ring focus:outline-none'
                 onKeyUp={filterPoke}
             />
 
-        <ul>
+        <ul className='grid sm:grid-cols-3 gap-6 pb-6'>
           
           {initialPokemon.map((poke, index) => (
 
-            <li key={index} className='bg-gray-100 my-6 rounded-lg sm:w-3/5 mx-auto hover:shadow-lg'>
+            <li key={index} className='bg-gray-100 rounded-lg w-full sm:w-auto mx-auto py-6 hover:shadow-lg'>
 
-              <Link href={`/pokemon?name=${poke.name}`}>
+              <Link href={`/pokemon/${poke.name}`}>
 
-                <a className='flex justify-center items-center gap-12'>
+                <a className='flex flex-col items-center focus:ring focus:outline-none'>
+                  <img src={poke.image} alt={poke.name} className='sm:w-6/12 w-3/12'/>
 
-                  <span className='font-bold'>{index + 1 + '.'}</span><h2 className='capitalize inline'>{poke.name}</h2>
-
-                  <img src={poke.image} alt={poke.name} className='w-1/4'/>
-                
+                  <div><span className='font-bold text-gray-500'>{index + 1 + '. '}</span><h2 className='capitalize inline font-bold text-xl sm:text-2xl text-gray-800'>{poke.name}</h2></div>
                 </a>
               
               </Link>              

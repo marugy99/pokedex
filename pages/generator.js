@@ -1,9 +1,10 @@
 import { useState } from "react";
+import Image from 'next/image'
 
 const Generator = () => {
 
     const [initialPokemon, setInitialPokemon] = useState(null)
-    const [image, setImage] = useState(null)
+    const [image, setImage] = useState(false)
     const [isRefreshing, setIsRefreshing] = useState(false)
 
     const fetchData = async () => {
@@ -20,7 +21,7 @@ const Generator = () => {
     
             setInitialPokemon(data)
 
-            setImage(`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${('00' + data.id).slice(-3)}.png`)
+            setImage(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`)
 
             setIsRefreshing(false)
             
@@ -38,15 +39,22 @@ const Generator = () => {
     return ( 
         
         <section className='text-center'>
-            <h1 className='text-4xl my-4'>Pokemon Generator</h1>
-            <button onClick={generatePokemon} className='bg-blue-800 text-white p-2 rounded-lg my-4 hover:opacity-80'>Generate Pokemon</button>
 
-            {isRefreshing && <p className='text-2xl font-bold py-4'>Loading...</p>}
+            <div className='flex justify-center'>
+                <Image src='/pokebola.svg' alt='pokeball logo' width={30} height={30}/>
+                <h1 className='text-2xl sm:text-4xl my-4 ml-2 text-gray-800 font-bold'>Pokemon Generator</h1>
+            </div>
+
+            <button onClick={generatePokemon} className='bg-green-700 text-white p-2 rounded-lg my-4 hover:opacity-80 focus:ring focus:outline-none'>Generate Pokemon</button>
+
+            {isRefreshing && <p className='text-lg sm:text-2xl font-bold py-4'>Loading...</p>}
             
             {initialPokemon && !isRefreshing && <div>
 
-                <img src={image} className='mx-auto w-1/4'/>
-                <h2 className='capitalize text-3xl mt-6'>{initialPokemon.name}</h2>
+                <h2 className='capitalize text-xl sm:text-3xl mt-6 text-gray-800 font-bold'>{initialPokemon.name}</h2>
+                <div className='max-w-sm mx-auto max-h-10'>
+                    <img src={image}/>
+                </div>
 
             </div>}
 

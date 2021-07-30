@@ -3,8 +3,9 @@ const Pokemon = ({ pokeman }) => {
     const {height, weight, name} = pokeman
 
     return (
-        <article className='text-center'>
-            <h1 className='capitalize text-4xl mt-6'>{name}</h1>
+        <article className='text-center text-gray-800'>
+            <h1 className='capitalize text-4xl mt-6 font-bold'>{name}</h1>
+
             <img src={pokeman.sprites.other["official-artwork"]["front_default"]} alt={name} className='mx-auto w-1/4 pt-6'/>
 
             <p><span className='font-bold'>Height: </span>{height / 10} {height / 10 === 1 ? 'meter' : 'meters'}</p>
@@ -26,7 +27,7 @@ export default Pokemon;
 
 export async function getServerSideProps({ query }) {
     
-    const name = query.name
+    const { name } = query
 
     try {
         const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
