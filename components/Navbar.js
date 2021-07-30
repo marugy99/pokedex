@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 const Navbar = () => {
     return ( 
-        <nav className='w-full text-center py-4 font-bold text-green-700 bg-gray-300 fixed'>
+        <nav className='w-full text-center py-4 font-bold text-green-700 bg-gray-300 fixed top-0 z-10'>
 
             <Link href='/'>
                 <a className='hover:text-green-600 focus:outline-none focus:ring'>Home</a>

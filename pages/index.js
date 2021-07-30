@@ -15,7 +15,7 @@ import Image from 'next/image'
     return (
       <>
         <div className='flex justify-center'>
-          <Image src='/pokebola.svg' alt='pokeball logo' width={30} height={30} />
+          <Image src='/pokebola.svg' alt='pokeball logo' width={30} height={30}/>
           <h1 className='text-3xl sm:text-4xl text-center text-gray-800 font-bold ml-2'>Pokedex by Maru</h1>
         </div>
 
