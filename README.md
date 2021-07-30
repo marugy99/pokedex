@@ -1,6 +1,6 @@
 # Pokedex
 
-Website with information about the first 150 pokemons from the [Poke API](https://pokeapi.co/). It includes a search bar and also a random pokemon generator.
+Website with information about the first 150 Pokemon's from the [Poke API](https://pokeapi.co/). It includes a search bar and also a random Pokemon generator.
 
 ➡ [Live site](https://pokedex-by-maru.netlify.app/)
 
