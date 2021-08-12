@@ -47,7 +47,7 @@ import Image from 'next/image'
                 <a className='flex flex-col items-center focus:ring focus:outline-none'>
                   <img src={poke.image} alt={poke.name} className='sm:w-6/12 w-3/12'/>
 
-                  <div><span className='font-bold text-gray-500'>{index + 1 + '. '}</span><h2 className='capitalize inline font-bold text-xl sm:text-2xl text-gray-800'>{poke.name}</h2></div>
+                  <div><span className='font-bold text-gray-500'>{poke.id + '. '}</span><h2 className='capitalize inline font-bold text-xl sm:text-2xl text-gray-800'>{poke.name}</h2></div>
                 </a>
               
               </Link>              
@@ -78,16 +78,17 @@ import Image from 'next/image'
       // Map through the results, getting each individual result and the index
       const pokemon = results.map((result, index) => {
 
-        // Make a padded index for the image url, adding two zeroes to the index and then using slice to only get the last three digits. Add one to the index because the start at 0
-        const paddedIndex = ('00' + (index + 1)).slice(-3)
+        // Create id
+        const id = index + 1
 
-        // Add the padded index to the image url
-        const image = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${paddedIndex}.png`
+        // Grab image
+        const image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
 
-        // Return an object with all the properties of the result (the name and url) and the image
+        // Return an object with all the properties of the result (the name and url), image and id
         return {
           ...result,
-          image
+          image,
+          id
         }
       })
       // Return the pokemon constant
