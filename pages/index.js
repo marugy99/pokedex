@@ -56,9 +56,14 @@ import Image from 'next/image'
           ))}
 
         </ul>
+        
+        {/* Show load more btn if: 
+            - the pokemon array is greater than than 0
+            - the pokemon number shown is NOT greater than or equal to the pokemon array
+            - the pokemon number shown is NOT greater than or equal to 151 */}
 
-        {pokeNum <= 151 && <button onClick={loadMore} className="block bg-green-600 py-2 mx-auto rounded-lg w-36 text-white hover:opacity-80 focus:ring focus:outline-none">Load More</button>}
-
+        {initialPokemon.length > 0 && !(pokeNum >= initialPokemon.length) && !(pokeNum >= 151) && <button onClick={loadMore} className="block bg-green-600 py-2 mx-auto rounded-lg w-36 text-white hover:opacity-80 focus:ring focus:outline-none">Load More</button>}
+        {initialPokemon.length <= 0 && <p className='text-center text-gray-800'>No results found!</p>}
         <br />
       </>
     )
