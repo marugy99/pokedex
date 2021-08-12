@@ -4,9 +4,17 @@ import Image from 'next/image'
   
   export default function Home({ pokemon }) {
 
+    const initialNum = 11;
+
+    const [pokeNum, setPokeNum] = useState(initialNum)
     const [initialPokemon, setInitialPokemon] = useState(pokemon)
 
+    const loadMore = () => {
+      setPokeNum(pokeNum + 11)
+    }
+
     const filterPoke = (e) => {
+      setPokeNum(initialNum)
       const searchString = e.target.value.toLowerCase()
       const filteredPoke = pokemon.filter(poke => poke.name.toLowerCase().includes(searchString))
       setInitialPokemon(filteredPoke)
@@ -30,7 +38,7 @@ import Image from 'next/image'
 
         <ul className='grid sm:grid-cols-3 gap-6 pb-6'>
           
-          {initialPokemon.map((poke, index) => (
+          {initialPokemon.slice(0, pokeNum).map((poke, index) => (
 
             <li key={index} className='bg-gray-100 rounded-lg w-full sm:w-auto mx-auto py-6 hover:shadow-lg'>
 
@@ -48,6 +56,10 @@ import Image from 'next/image'
           ))}
 
         </ul>
+
+        {pokeNum <= 151 && <button onClick={loadMore} className="block bg-green-600 py-2 mx-auto rounded-lg w-36 text-white hover:opacity-80 focus:ring focus:outline-none">Load More</button>}
+
+        <br />
       </>
     )
   }
@@ -58,7 +70,7 @@ import Image from 'next/image'
     try {
 
       // Fetch request to the Pokemon API
-      const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=150')
+      const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
 
       // Destructure results 
       const {results} = await res.json()
