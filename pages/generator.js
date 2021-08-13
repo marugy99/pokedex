@@ -13,8 +13,8 @@ const Generator = () => {
             setIsRefreshing(true)
             
             // Generate a random id number
-            const id = Math.floor((Math.random() + 1) * (150))
-    
+            const id = Math.floor(Math.random() * 151)
+
             const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
         
             const data = await res.json()
