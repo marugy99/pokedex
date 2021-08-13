@@ -10,7 +10,3 @@ Website with information about the first 151 Pokemon's from the [Poke API](https
 
 ## Dev Server
 To run the dev server, run <code>npm run dev</code> and navigate to <code>localhost:3000</code>
-
-## Preview
-
-![website screenshot](https://i.imgur.com/s3NuyVE.png)
