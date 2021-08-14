@@ -38,7 +38,7 @@ const Generator = () => {
 
     return ( 
         
-        <section className='text-center'>
+        <section className='text-center mt-6'>
 
             <div className='flex justify-center'>
                 <Image src='/pokebola.svg' alt='pokeball logo' width={30} height={30}/>

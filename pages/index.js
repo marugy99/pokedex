@@ -21,7 +21,7 @@ import { useState } from 'react'
 
     return (
       <>
-        <div className='flex justify-center mt-2'>
+        <div className='flex justify-center mt-5'>
           <img src='/pokebola.svg' alt='pokeball logo' className='w-7 h-7 sm:w-10 sm:h-10 mt-1'/>
           <h1 className='text-3xl sm:text-5xl text-center text-gray-800 font-bold ml-2'>Pokédex</h1>
         </div>
@@ -65,8 +65,8 @@ import { useState } from 'react'
             - the pokemon number shown is NOT greater than or equal to the pokemon array
             - the pokemon number shown is NOT greater than or equal to 151 */}
 
-        {initialPokemon.length > 0 && !(pokeNum >= initialPokemon.length) && !(pokeNum >= 151) && <button onClick={loadMore} className="block bg-green-700 py-2 mx-auto rounded-lg w-36 text-white hover:opacity-80 focus:ring focus:outline-none">Load More</button>}
-        {initialPokemon.length <= 0 && <p className='text-center text-gray-800'>No results found!</p>}
+        {initialPokemon.length > 0 && !(pokeNum >= initialPokemon.length) && !(pokeNum >= 151) && <button onClick={loadMore} className="block bg-blue-500 py-2 mx-auto rounded-lg w-36 text-white shadow-xl hover:opacity-80 focus:ring focus:outline-none">+ Load More</button>}
+        {initialPokemon.length <= 0 && <p className='text-center text-gray-600'>No results found! Try a different name</p>}
         <br />
       </>
     )
